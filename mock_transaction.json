@@ -1,0 +1,11 @@
+{
+    "transaction_id": "b35d8def-0025-440f-9d0e-b0aab008a093",
+    "user_id": 1009,
+    "amount": 42.38,
+    "currency": "KES",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-08-27T15:42:57.289182Z"
+  }

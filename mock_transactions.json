@@ -1,0 +1,222 @@
+[
+  {
+    "transaction_id": "92f8a3cd-1516-4cc8-a061-0e619e6246fc",
+    "user_id": 1009,
+    "amount": 1628.5,
+    "currency": "EUR",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Netflix"
+    },
+    "timestamp": "2025-09-27T12:42:57.289182Z"
+  },
+  {
+    "transaction_id": "927ebea8-1b1c-499e-a96c-d0574a680410",
+    "user_id": 1009,
+    "amount": 1307.14,
+    "currency": "KES",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Amazon"
+    },
+    "timestamp": "2025-09-27T13:12:57.289182Z"
+  },
+  {
+    "transaction_id": "247e4aa7-1d2f-4767-9443-03a9d511994f",
+    "user_id": 1008,
+    "amount": 801.69,
+    "currency": "USD",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Spotify"
+    },
+    "timestamp": "2025-09-27T13:42:57.289182Z"
+  },
+  {
+    "transaction_id": "6b8b7eaf-d51d-44f7-bd2f-dcc5c7e40fec",
+    "user_id": 1010,
+    "amount": 1640.6,
+    "currency": "USD",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-09-27T14:12:57.289182Z"
+  },
+  {
+    "transaction_id": "333f0fb4-3998-451c-86a8-98b87d504916",
+    "user_id": 1003,
+    "amount": 1737.44,
+    "currency": "GBP",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Amazon"
+    },
+    "timestamp": "2025-09-27T14:42:57.289182Z"
+  },
+  {
+    "transaction_id": "49800eb3-c513-45ce-bc84-38a91394a178",
+    "user_id": 1002,
+    "amount": 269.03,
+    "currency": "USD",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Spotify"
+    },
+    "timestamp": "2025-09-27T15:12:57.289182Z"
+  },
+  {
+    "transaction_id": "b35d8def-0025-440f-9d0e-b0aab008a893",
+    "user_id": 1009,
+    "amount": 42.38,
+    "currency": "KES",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-09-27T15:42:57.289182Z"
+  },
+  {
+    "transaction_id": "70a1161b-d155-4466-b24d-72c04ff31365",
+    "user_id": 1008,
+    "amount": 497.06,
+    "currency": "USD",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-09-27T16:12:57.289182Z"
+  },
+  {
+    "transaction_id": "b1d4434c-a84a-47b0-bbc7-5af13f73b3c6",
+    "user_id": 1002,
+    "amount": 314.57,
+    "currency": "NGN",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-09-27T16:42:57.289182Z"
+  },
+  {
+    "transaction_id": "e2001ce3-21c0-49c5-b8bb-ec5a3847593e",
+    "user_id": 1004,
+    "amount": 1263.94,
+    "currency": "EUR",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Netflix"
+    },
+    "timestamp": "2025-09-27T17:12:57.289182Z"
+  },
+  {
+    "transaction_id": "d6699411-be29-4607-92f4-d24f4ab11be0",
+    "user_id": 1002,
+    "amount": 469.98,
+    "currency": "GBP",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-09-27T17:42:57.289182Z"
+  },
+  {
+    "transaction_id": "08855d7d-0d27-49da-824a-0e88234925f9",
+    "user_id": 1009,
+    "amount": 62.0,
+    "currency": "KES",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Amazon"
+    },
+    "timestamp": "2025-09-27T18:12:57.289182Z"
+  },
+  {
+    "transaction_id": "de57ded8-7f5f-4bb8-a77e-ffa1b309d103",
+    "user_id": 1001,
+    "amount": 152.96,
+    "currency": "EUR",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Apple"
+    },
+    "timestamp": "2025-09-27T18:42:57.289182Z"
+  },
+  {
+    "transaction_id": "0b94a0c7-8c0f-43c7-ae54-944d609af4b9",
+    "user_id": 1001,
+    "amount": 146.87,
+    "currency": "GBP",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Spotify"
+    },
+    "timestamp": "2025-09-27T19:12:57.289182Z"
+  },
+  {
+    "transaction_id": "ef044986-0a28-4ec9-89a5-b71289cd5398",
+    "user_id": 1007,
+    "amount": 162.05,
+    "currency": "GBP",
+    "type": "debit",
+    "metadata": {
+      "merchant": "PayPal"
+    },
+    "timestamp": "2025-09-27T19:42:57.289182Z"
+  },
+  {
+    "transaction_id": "954a4481-3cb5-4de6-bba8-20983bf814fd",
+    "user_id": 1010,
+    "amount": 77.89,
+    "currency": "NGN",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-09-27T20:12:57.289182Z"
+  },
+  {
+    "transaction_id": "84e6621e-040d-4d8e-a517-ed8a1216f824",
+    "user_id": 1009,
+    "amount": 1171.27,
+    "currency": "USD",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Netflix"
+    },
+    "timestamp": "2025-09-27T20:42:57.289182Z"
+  },
+  {
+    "transaction_id": "622ac6ba-6582-4b8c-9554-69193e1aa6f9",
+    "user_id": 1008,
+    "amount": 1438.22,
+    "currency": "USD",
+    "type": "debit",
+    "metadata": {
+      "merchant": "Spotify"
+    },
+    "timestamp": "2025-09-27T21:12:57.289182Z"
+  },
+  {
+    "transaction_id": "53228bbb-fe2a-442c-b289-106aa23c4859",
+    "user_id": 1006,
+    "amount": 251.37,
+    "currency": "GBP",
+    "type": "credit",
+    "metadata": {
+      "merchant": "PayPal"
+    },
+    "timestamp": "2025-09-27T21:42:57.289182Z"
+  },
+  {
+    "transaction_id": "f9553e07-932c-4810-827e-2b2bc36e17ed",
+    "user_id": 1003,
+    "amount": 476.72,
+    "currency": "KES",
+    "type": "credit",
+    "metadata": {
+      "merchant": "Shopify"
+    },
+    "timestamp": "2025-09-27T22:12:57.289182Z"
+  }
+]

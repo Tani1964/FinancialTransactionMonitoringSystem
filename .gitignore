@@ -1,0 +1,57 @@
+# Go specific
+/bin/
+/pkg/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.work
+
+# Go Modules
+/vendor/
+/go.sum
+
+# Rust specific
+/target/
+**/*.rs.bk
+Cargo.lock
+*.pdb
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Log files
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+
+# Build output
+dist/
+build/
+
+# Dependency directories
+node_modules/
+
+# Debug files
+debug/
+
+# Database files
+*.db
+*.sqlite
