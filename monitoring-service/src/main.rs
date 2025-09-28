@@ -1,6 +1,7 @@
 use std::env;
 use std::io::{Read, Write};
 use std::net::{TcpListener, TcpStream};
+use std::sync::{LazyLock, Mutex};
 use serde::{Serialize, Deserialize};
 use serde_json;
 
@@ -21,8 +22,8 @@ const OK_RESPONSE: &str = "HTTP/1.1 200 OK\r\n\r\n";
 const NOT_FOUND_RESPONSE: &str = "HTTP/1.1 404 NOT FOUND\r\n\r\n";
 const INTERNAL_SERVER_ERROR_RESPONSE: &str = "HTTP/1.1 500 INTERNAL SERVER ERROR\r\n\r\n";
 
-// store transactions in-memory (later you can move this to Redis or TigerBeetle)
-static mut TRANSACTIONS: Vec<Transaction> = Vec::new();
+// Thread-safe global storage for transactions
+static TRANSACTIONS: LazyLock<Mutex<Vec<Transaction>>> = LazyLock::new(|| Mutex::new(Vec::new()));
 
 fn main() {
     let port = env::var("MONITORING_SERVICE_PORT").unwrap_or("8082".to_string());
@@ -59,7 +60,9 @@ fn handle_client(mut stream: TcpStream) {
         Ok(size) => {
             request.push_str(String::from_utf8_lossy(&buffer[..size]).as_ref());
 
-            let (status_line, content) = if request_with(&request, "POST /transactions") {
+            let (status_line, content) = if request_with(&request, "GET / ") {
+                handle_index()
+            } else if request_with(&request, "POST /transactions") {
                 handle_post_transaction(&request)
             } else if request_with(&request, "GET /transactions/") {
                 handle_get_transaction(&request)
@@ -75,14 +78,43 @@ fn handle_client(mut stream: TcpStream) {
     }
 }
 
+// GET /
+fn handle_index() -> (String, String) {
+    let response_body = format!(
+        "{{
+    \"service\": \"{}\",
+    \"status\": \"running\",
+    \"endpoints\": [
+        {{
+            \"method\": \"POST\",
+            \"path\": \"/transactions\",
+            \"description\": \"Create a new transaction\"
+        }},
+        {{
+            \"method\": \"GET\",
+            \"path\": \"/transactions/{{id}}\",
+            \"description\": \"Get transaction by ID\"
+        }}
+    ]
+}}", SERVICE_NAME);
+    
+    (
+        "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\n\r\n".to_string(),
+        response_body
+    )
+}
+
 // POST /transactions
 fn handle_post_transaction(request: &str) -> (String, String) {
     match get_transaction_from_request(request) {
         Some(tx) => {
-            unsafe {
-                TRANSACTIONS.push(tx.clone());
+            match TRANSACTIONS.lock() {
+                Ok(mut transactions) => {
+                    transactions.push(tx.clone());
+                    (OK_RESPONSE.to_string(), serde_json::to_string(&tx).unwrap())
+                }
+                Err(_) => (INTERNAL_SERVER_ERROR_RESPONSE.to_string(), "Lock error".to_string()),
             }
-            (OK_RESPONSE.to_string(), serde_json::to_string(&tx).unwrap())
         }
         None => (INTERNAL_SERVER_ERROR_RESPONSE.to_string(), "Invalid Transaction".to_string()),
     }
@@ -91,11 +123,14 @@ fn handle_post_transaction(request: &str) -> (String, String) {
 // GET /transactions/{id}
 fn handle_get_transaction(request: &str) -> (String, String) {
     let id = get_id(request);
-    unsafe {
-        if let Some(tx) = TRANSACTIONS.iter().find(|t| t.transaction_id == id) {
-            (OK_RESPONSE.to_string(), serde_json::to_string(tx).unwrap())
-        } else {
-            (NOT_FOUND_RESPONSE.to_string(), "Transaction Not Found".to_string())
+    match TRANSACTIONS.lock() {
+        Ok(transactions) => {
+            if let Some(tx) = transactions.iter().find(|t| t.transaction_id == id) {
+                (OK_RESPONSE.to_string(), serde_json::to_string(tx).unwrap())
+            } else {
+                (NOT_FOUND_RESPONSE.to_string(), "Transaction Not Found".to_string())
+            }
         }
+        Err(_) => (INTERNAL_SERVER_ERROR_RESPONSE.to_string(), "Lock error".to_string()),
     }
 }

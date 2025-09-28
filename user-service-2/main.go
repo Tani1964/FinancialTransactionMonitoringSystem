@@ -85,7 +85,7 @@ func createTransaction(c *gin.Context) {
 }
 
 func indexHandler(c *gin.Context) {
-	c.String(http.StatusOK, "Welcome to the Transactionstore!")
+	c.String(http.StatusOK, "Welcome to the User Service 2!")
 }
 
 func main() {
@@ -99,5 +99,5 @@ func main() {
 	router.POST("/transactions", createTransaction)
 
 	// run the server
-	router.Run("localhost:3000")
+	router.Run("localhost:3001")
 }
